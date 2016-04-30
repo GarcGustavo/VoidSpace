@@ -1,0 +1,7 @@
+package rbadia.voidspace.model;
+import java.awt.Rectangle;
+import rbadia.voidspace.main.GameScreen;
+
+public class EnemyShip extends Rectangle {
+
+}

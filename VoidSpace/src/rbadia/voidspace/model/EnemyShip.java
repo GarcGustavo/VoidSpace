@@ -1,0 +1,71 @@
+package rbadia.voidspace.model;
+import java.awt.Rectangle;
+import rbadia.voidspace.main.GameScreen;
+import java.util.Random;
+
+public class EnemyShip extends Rectangle {
+	
+		private static final long serialVersionUID = 1L;
+		
+		public static final int DEFAULT_SPEED = 2;
+		
+		private int enemyWidth = 32;
+		private int enemyHeight = 32;
+		private int speed = DEFAULT_SPEED;
+//		private Random generator = new Random();
+		private int angle;
+
+		private Random rand = new Random();
+		
+		/**
+		 * Crates a new asteroid at a random x location at the top of the screen 
+		 * @param screen the game screen
+		 */
+		public EnemyShip(GameScreen screen){
+
+			this.setLocation(
+					rand.nextInt(screen.getWidth() - enemyWidth),
+	        		0);
+			this.setSize(enemyWidth, enemyHeight);
+		}
+		
+		public int getEnemyWidth() {
+			return enemyWidth;
+		}
+		public int getEnemyHeight() {
+			return enemyHeight;
+		}
+
+		/**
+		 * Returns the current asteroid speed
+		 * @return the current asteroid speed
+		 */
+		public int getEnemySpeed() {
+			return speed;
+		}
+		
+		/**
+		 * Set the current asteroid speed
+		 * @param speed the speed to set
+		 */
+		public void setEnemySpeed(int speed) {
+			this.speed = speed;
+		}
+		
+		/**
+		 * Returns the default asteroid speed.
+		 * @return the default asteroid speed
+		 */
+		public int getDefaultEnemySpeed(){
+			return DEFAULT_SPEED;
+		}
+
+		public int getEnemyAngle() {
+			return angle;
+		}
+
+		public void setEnemyAngle(int angle) {
+			this.angle = angle;
+		}
+		
+}
