@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -183,6 +184,8 @@ public class GameLogic {
 	 */
 	public Asteroid newAsteroid(GameScreen screen){
 		this.asteroid = new Asteroid(screen);
+		//		Random rand = new Random();
+		//		this.asteroid.setAngle(rand.nextInt(8)-4);
 		return asteroid;
 	}
 
@@ -237,5 +240,23 @@ public class GameLogic {
 		enemyBullets.add(enemyBullet);
 		soundMan.playBulletSound();
 	}
+
+	//	public boolean moveBossBullet(EnemyBullet enemyBullet, EnemyBullet enemyBullet2, EnemyBullet enemyBullet3){
+	//		if(enemyBullet.getY() - enemyBullet.getEnemyBulletSpeed() >= 0){
+	//			enemyBullet.translate(-10, enemyBullet.getEnemyBulletSpeed());
+	//			return false;
+	//		}
+	//		if(enemyBullet2.getY() - enemyBullet2.getEnemyBulletSpeed() >= 0){
+	//			enemyBullet2.translate(0, enemyBullet2.getEnemyBulletSpeed());
+	//			return false;
+	//		}
+	//		if(enemyBullet3.getY() - enemyBullet3.getEnemyBulletSpeed() >= 0){
+	//			enemyBullet3.translate(10, enemyBullet3.getEnemyBulletSpeed());
+	//			return false;
+	//		}
+	//		else{
+	//			return true;
+	//		}
+	//	}
 
 }

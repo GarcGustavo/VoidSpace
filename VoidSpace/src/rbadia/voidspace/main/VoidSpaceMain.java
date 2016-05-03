@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 /**
  * Main game class. Starts the game.
+ * 
+ * Project done by Gustavo Reyes and Felix Ortiz
  */
 public class VoidSpaceMain {
 

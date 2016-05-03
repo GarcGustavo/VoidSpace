@@ -6,18 +6,11 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Random;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import rbadia.voidspace.graphics.GraphicsManager;
 import rbadia.voidspace.model.Asteroid;
 import rbadia.voidspace.model.Boss;
@@ -173,14 +166,8 @@ public class GameScreen extends JPanel {
 			return;
 		}
 		if(status.isLevelUp()){
-			// draw the message
-
-
-			// Your database code here
 
 			drawLevelUp();
-			//			for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);stop>System.nanoTime();) {
-			//			
 			long currentTime = System.currentTimeMillis();
 			// draw the explosions until their time passes
 			drawLevelUp();
@@ -194,7 +181,6 @@ public class GameScreen extends JPanel {
 			if((currentTime - lastShipTime) < NEW_SHIP_DELAY){
 				graphicsMan.drawShipExplosion(shipExplosion, g2d, this);
 			}
-			//			}
 			status.setLevelUp(false);
 			return;
 		}
@@ -210,10 +196,6 @@ public class GameScreen extends JPanel {
 		// draw asteroid
 		if(!status.isNewAsteroid()){
 
-			//			if((asteroid.getX()==0) || (asteroid.getX()==(this.getWidth()-asteroid.getAsteroidWidth()))){
-			//				asteroid.setAngle(-asteroid.getAngle());
-			//			}
-
 			if(level == 1){
 				// draw the asteroid until it reaches the bottom of the screen
 				if(asteroid.getY() + asteroid.getSpeed() < this.getHeight()){
@@ -227,14 +209,6 @@ public class GameScreen extends JPanel {
 			}
 
 			if((level >= 2) && (level%5 != 0)){
-
-				// draw the asteroid until it reaches the bottom of the screen
-
-				//				if((asteroid.getX()==0) || (asteroid.getX()==(this.getWidth()-asteroid.getAsteroidWidth()))){
-				//					asteroid.setAngle(-asteroid.getAngle());
-				//				}
-				//				asteroid.translate(asteroid.getAngle(), asteroid.getSpeed());
-				//				graphicsMan.drawAsteroid(asteroid, g2d, this);
 
 				if(asteroid.getY() + asteroid.getSpeed() < this.getHeight()){
 					if((asteroid.getX()<0) || (asteroid.getX()>(this.getWidth()-asteroid.getAsteroidWidth()))){
@@ -250,8 +224,7 @@ public class GameScreen extends JPanel {
 			}
 
 			if((level >= 3) && (level%5 != 0)){
-				//Random random2 = new Random();
-				// draw the asteroid until it reaches the bottom of the screen
+				// draw the enemy until it reaches the bottom of the screen
 				if(enemyShip.getY() + enemyShip.getEnemySpeed() < this.getHeight()){
 					enemyShip.translate(enemyShip.getEnemyAngle(), enemyShip.getEnemySpeed());
 					graphicsMan.drawEnemyShip(enemyShip, g2d, this);
@@ -272,20 +245,20 @@ public class GameScreen extends JPanel {
 				}
 			}
 
-			//TODO
+			//Will show up every 5 levels
 			if(level%5 == 0){
 
+				//remove asteroids and enemies from the screen
 				asteroid.setLocation(-100, -100);
 				enemyShip.setLocation(-100, -100);
 
+				//creates a boss character
 				if(boss.getX() + boss.getBossSpeed() < this.getWidth()){
 					boss.translate(boss.getBossAngle(), 0);
 					if(bossDmg){
 						graphicsMan.makeBossNormal();
 						bossDmg=false;}
 					graphicsMan.drawBoss(boss, g2d, this);
-					//enemy firing
-
 					if(boss.getX()>0){
 						entry = true;
 					}
@@ -294,7 +267,6 @@ public class GameScreen extends JPanel {
 						boss.setBossAngle(-boss.getBossAngle());
 					}
 
-					//					if(Math.abs(ship.x-boss.x) <= 50){
 					long currentTime = System.currentTimeMillis();
 					if(bulletsFiredBoss==10){
 						lastEnemyBulletTime=System.currentTimeMillis()+200;
@@ -305,7 +277,6 @@ public class GameScreen extends JPanel {
 						gameLogic.fireBossBullet();
 						bulletsFiredBoss++;
 					}
-					//					}
 				}
 			}
 		}
@@ -328,7 +299,6 @@ public class GameScreen extends JPanel {
 
 		if(!status.isNewEnemy()){
 			if((level >= 3) && (level%5 != 0)){
-				//Random random2 = new Random();
 				// draw the asteroid until it reaches the bottom of the screen
 				if(enemyShip.getY() + enemyShip.getEnemySpeed() < this.getHeight()){
 					if((enemyShip.getX()<0) || (enemyShip.getX()>(this.getWidth()-enemyShip.getEnemyWidth()))){
@@ -424,7 +394,6 @@ public class GameScreen extends JPanel {
 				// increase asteroids destroyed count
 				status.setAsteroidsDestroyed(status.getAsteroidsDestroyed() + 1);
 				status.setScore(status.getScore() + 50);
-				// "remove" asteroid
 				// "remove" enemy
 				asteroidExplosion = new Rectangle(
 						enemyShip.x,
@@ -471,7 +440,7 @@ public class GameScreen extends JPanel {
 					graphicsMan.drawBossExplosion(bossExplosion, g2d, this);
 					lastBossShipTime = System.currentTimeMillis();
 
-					// play asteroid explosion sound
+					// play boss explosion sound
 					soundMan.playBossExplosionSound();
 
 					entry = false;
@@ -685,34 +654,6 @@ public class GameScreen extends JPanel {
 	private void drawLevelUp() {
 		//String levelUpStr = "LEVEL UP!";
 		graphicsMan.drawLevelUp();
-		//		g2d.setFont(originalFont.deriveFont(originalFont.getSize2D() + 1));
-		//		FontMetrics fm = g2d.getFontMetrics();
-		//		int ascent = fm.getAscent();
-		//		int strWidth = fm.stringWidth(levelUpStr);
-		//		int strX = (this.getWidth() - strWidth)/2;
-		//		int strY = (this.getHeight() + ascent)/2;
-		//		g2d.setPaint(Color.WHITE);
-		//		g2d.drawString(levelUpStr, strX, strY);
-//		g2d.setFont(originalFont.deriveFont(originalFont.getSize2D() + 1));
-//		Font currentFont = biggestFont == null? bigFont : biggestFont;
-//		float fontSize = currentFont.getSize2D();
-//		bigFont = currentFont.deriveFont(fontSize + 1).deriveFont(Font.BOLD);
-//		FontMetrics fm = g2d.getFontMetrics(bigFont);
-//		int strWidth = fm.stringWidth(levelUpStr);
-//		if(strWidth > this.getWidth() - 300){
-//			biggestFont = currentFont;
-//			bigFont = biggestFont;
-//			fm = g2d.getFontMetrics(bigFont);
-//			strWidth = fm.stringWidth(levelUpStr);
-//		}
-//		int ascent = fm.getAscent();
-//		int strX = (this.getWidth() - strWidth)/2;
-//		int strY = (this.getHeight() + ascent)/2;
-//		g2d.setFont(bigFont);
-//		g2d.setPaint(Color.WHITE);
-//		long start = System.currentTimeMillis();
-//		long end = start + 3*1000; // 60 seconds * 1000 ms/sec
-//		g2d.drawString(levelUpStr, strX, strY);
 	}
 
 	/**

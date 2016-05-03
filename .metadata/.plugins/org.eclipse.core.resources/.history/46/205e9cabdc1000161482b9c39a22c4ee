@@ -9,6 +9,7 @@ public class GameStatus {
 	private boolean gameStarting = false;
 	private boolean gameOver = false;
 	private boolean levelUp = false;
+//	private boolean enemies = false;
 	
 	// status variables
 	private boolean newShip;
@@ -16,6 +17,7 @@ public class GameStatus {
 	private boolean newEnemy;
 	private boolean newBoss;
 	private long asteroidsDestroyed = 0;
+//	private int level = 1;
 	private int shipsLeft;
 	private long score = 0;
 	

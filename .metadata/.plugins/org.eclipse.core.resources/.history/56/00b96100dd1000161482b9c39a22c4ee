@@ -1,6 +1,7 @@
 package rbadia.voidspace.model;
 import java.awt.Rectangle;
 import rbadia.voidspace.main.GameScreen;
+import java.util.Random;
 
 public class Boss extends Rectangle {
 	

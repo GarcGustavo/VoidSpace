@@ -1,12 +1,19 @@
 package rbadia.voidspace.graphics;
 
+import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import rbadia.voidspace.model.Asteroid;
@@ -40,6 +47,7 @@ public class GraphicsManager {
 		// load images
 		try {
 			this.bossImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/boss.png"));
+			this.bossDmgImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bossDamage.png"));
 			this.shipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/ship.png"));
 			this.asteroidImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroid.png"));
 			this.asteroidExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));

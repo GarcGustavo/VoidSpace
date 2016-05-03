@@ -1,6 +1,7 @@
 package rbadia.voidspace.model;
 import java.awt.Rectangle;
 import rbadia.voidspace.main.GameScreen;
+import java.util.Random;
 
 public class Boss extends Rectangle {
 	
@@ -12,6 +13,7 @@ public class Boss extends Rectangle {
 		private int bossHeight = 200;
 		private int speed = DEFAULT_SPEED;
 		private int angle = 2;
+
 		
 		/**
 		 * Crates a new asteroid at a random x location at the top of the screen 
