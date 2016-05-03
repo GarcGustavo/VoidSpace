@@ -7,7 +7,9 @@
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="javax.swing.Icon"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
-<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
 <fullyQualifiedTypeName name="java.awt.Frame"/>
+<fullyQualifiedTypeName name="java.util.TimerTask"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
 </qualifiedTypeNameHistroy>

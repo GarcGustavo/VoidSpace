@@ -37,6 +37,9 @@ public class GraphicsManager {
 	private BufferedImage bossImg;
 	private BufferedImage bossDmgImg;
 	private BufferedImage bossExplosionImg;
+	private BufferedImage levelUp;
+	private ImageObserver observerForLevel;
+	private Graphics2D g2dForLevel;
 
 	/**
 	 * Creates a new graphics manager and loads the game images.
@@ -54,6 +57,8 @@ public class GraphicsManager {
 			this.enemyBulletImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/enemyBullet.png"));
 			this.enemyShipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/enemyShip.png"));
 			this.bossExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/boosBoom.png"));
+			this.levelUp = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/levelUp.png"));
+
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "The graphic files are either corrupt or missing.",
 					"VoidSpace - Fatal Error", JOptionPane.ERROR_MESSAGE);
@@ -82,6 +87,8 @@ public class GraphicsManager {
 	public void drawBoss(Boss boss, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(bossImg, boss.x, boss.y, observer);
 	}
+
+	
 	
 	public void makeBossDmg() {
 		try {
@@ -91,6 +98,7 @@ public class GraphicsManager {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public void makeBossNormal() {
 		try {
@@ -109,6 +117,8 @@ public class GraphicsManager {
 	 */
 	public void drawBullet(Bullet bullet, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(bulletImg, bullet.x, bullet.y, observer);
+		g2dForLevel = g2d;
+		observerForLevel = observer;
 	}
 
 	public void drawEnemyBullet(EnemyBullet bullet, Graphics2D g2d, ImageObserver observer) {
@@ -124,6 +134,8 @@ public class GraphicsManager {
 	public void drawAsteroid(Asteroid asteroid, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(asteroidImg, asteroid.x, asteroid.y, observer);
 	}
+	
+	
 
 	/**
 	 * Draws a ship explosion image to the specified graphics canvas.
@@ -151,6 +163,12 @@ public class GraphicsManager {
 
 	public void drawBossBullet(EnemyBullet bullet, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(enemyBulletImg, bullet.x, bullet.y, observer);
+		
+	}
+
+	public void drawLevelUp() {
+		g2dForLevel.drawImage(levelUp, 200, 200, observerForLevel);
+		
 	}
 
 

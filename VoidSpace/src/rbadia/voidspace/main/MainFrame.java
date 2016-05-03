@@ -1,10 +1,12 @@
 package rbadia.voidspace.main;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,7 +31,6 @@ public class MainFrame extends JFrame {
 	private JLabel shipsLabel;
 	private JLabel shipsValueLabel;
 	private JLabel scoreValueLabel;
-	//TODO Score
 	
 	/**
 	 * This is the default constructor
@@ -48,6 +49,7 @@ public class MainFrame extends JFrame {
 		this.setSize(602, 540);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Void Space");
+		this.setBackground(Color.BLACK);
 		SoundManager.playSoundtrack();
 //		this.setResizable(false);
 		
@@ -123,6 +125,7 @@ public class MainFrame extends JFrame {
 			jContentPane.add(destroyedValueLabel, gridBagConstraints4);
 			jContentPane.add(scoreLabel, gridBagConstraints5);
 			jContentPane.add(scoreValueLabel, gridBagConstraints6);
+			jContentPane.setBackground(new Color(38, 199, 54));
 		} 
 		return jContentPane;
 	}
